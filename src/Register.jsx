@@ -5,6 +5,9 @@ export default function Register() {
   const [user, setUser] = useState({});
   const [count, setCount] = useState(0);
   const [value, setValue] = useState(0);
+  const [a, setA] = useState(0);
+  const [b, setB] = useState(0);
+  const [result, setResult] = useState();
   const handleClick = () => {
     alert("Hello World");
   };
@@ -17,6 +20,9 @@ export default function Register() {
   const subToValue = () => {
     setValue(value - 1);
   }
+  const findSum = () => {
+    setResult(Number(a) + Number(b));
+  };
   return (
     <div>
       <h2>Register</h2>
@@ -55,11 +61,21 @@ export default function Register() {
         {count}<br></br>
         <button onClick={updateCount}>Update Count</button>
       </p>
-      <div style={{display:'inline-flex', margin:20}}>
+      <hr />
+      <div style={{display:'inline-flex', margin:20, gap:5}}>
         <button onClick={subToValue}> - </button>
         <p>{value}</p>
         <button onClick={addToValue}> + </button>
       </div>
+      <hr />
+      <p>
+        <input type="number" onChange={(e) => setA(e.target.value)} />
+      </p>
+      <p>
+        <input type="number" onChange={(e) => setB(e.target.value)} />
+      </p>
+      <button onClick={findSum}>Submit</button>
+      <p>{result}</p>
     </div>
   );
 }
