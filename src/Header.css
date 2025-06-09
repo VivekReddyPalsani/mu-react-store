@@ -1,0 +1,16 @@
+.App-Header-Row {
+    display: flex;
+    justify-content: space-between;
+    background-color: orange;
+}
+
+.App-Header-Row div {
+    padding: 10px;
+}
+
+.App-Header-Row li {
+    display: inline-block;
+    padding: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
