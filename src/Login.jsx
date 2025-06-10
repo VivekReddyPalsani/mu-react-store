@@ -1,21 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { AppContext } from "./App";
-
 export default function Login() {
-  const {user, setUser} = useContext(AppContext);
-
+  const [user, setUser] = useState({});
+  const [error, setError] = useState();
+  const Navigate = useNavigate();
+  const { users } = useContext(AppContext);
   const handleSubmit = () => {
-    console.log(user);
-  }
-
+    const found = users.find(
+      (elem) => elem.email === user.email && elem.pass === user.pass
+    );
+    if (!found) {
+      setError("Access Denied");
+    } else {
+      Navigate("/");
+    }
+  };
   return (
     <div>
       <h2>Login Form</h2>
-      <p><input type="text" /></p>
-      <p><input type="password" /></p>
-      <p><button onClick={handleSubmit}>Login</button></p>
+      {error}
+      <p>
+        <input
+          type="text"
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+        />
+      </p>
+      <p>
+        <input
+          type="password"
+          onChange={(e) => setUser({ ...user, pass: e.target.value })}
+        />
+      </p>
+      <p>
+        <button onClick={handleSubmit}>Login</button>
+      </p>
       <hr />
       <p>
         <Link to="/register">Create Account</Link>

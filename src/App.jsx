@@ -12,9 +12,10 @@ export const AppContext = createContext();
 
 function App() {
   const [user, setUser] = useState({});
+  const [users, setUsers] = useState([]);
   return (
     <div>
-      <AppContext.Provider value={{user, setUser}}>
+      <AppContext.Provider value={{users, setUsers}}>
         <BrowserRouter>
           <Header name="mu-react-store" />
           <Routes>

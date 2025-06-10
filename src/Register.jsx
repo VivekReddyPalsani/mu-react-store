@@ -1,19 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "./App";
 
 export default function Register() {
-  const {user, setUser} = useContext(AppContext) //importing global variable from App.jsx
-  
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const {users, setUsers} = useContext(AppContext); //importing global variable from App.jsx
+  const Navigate = useNavigate();
+  const [user, setUser] = useState();
 
   const handleSubmit = () => {
-    setEmail(user.email);
-    setName(user.name);
-    console.log(user);
+    setUsers([...users, user]); //adding user object to users array
+    Navigate('/login')
+    console.log(users)  
   }
 
   return (
@@ -48,8 +47,6 @@ export default function Register() {
         <Link to="/login">Aready a member? Login Here...</Link>
       </p>
       <hr />
-      <div>{name}</div>
-      <div>{email}</div>
     </div>
   );
 }
