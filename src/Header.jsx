@@ -18,7 +18,10 @@ export default function Header({ name }) {
           </li>
           <li>
             {email ? (
+              <>
+                <Link to="/order"><button className="menu">Order</button></Link>
                 <Link to="/logout"><button className="menu">Logout</button></Link>
+              </>
               ) : (
                 <Link to="/login"><button className="menu">Login</button></Link>
               )

@@ -16,11 +16,11 @@
 }
 
 .App-Header-Row button {
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: lightseagreen;
     border-radius: 5rem;
     height: 3rem;
     width: 8rem;
     font-size: 20px;
-    border: solid;
+    border: none;
 }

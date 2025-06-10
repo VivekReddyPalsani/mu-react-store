@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Cart() {
     const Navigate = useNavigate();
-    const {cart, setCart, email} = useContext(AppContext);
+    const {cart, setCart, email, orders, setOrders} = useContext(AppContext);
     const incr = () => {
         setCart({...cart, qty: cart.qty + 1})
     }
@@ -17,8 +17,17 @@ export default function Cart() {
     const handleLogin = () => {
         Navigate("/login");
     }
+
+    const placeholder = () => {
+        setOrders([...orders, cart]);
+        setCart({});
+        Navigate("/order");
+    }
   return (
     <div>
+        <h2>My Cart</h2>
+        {Object.keys(cart).length > 0 ? (
+        <>
         <div className='App-Cart-Row'>
             <div>
                 <img src={cart.imgUrl} alt={cart.name} />
@@ -36,8 +45,9 @@ export default function Cart() {
         <h2>Order Value :- ${cart.qty * cart.price}</h2>
         <hr />
         <p>
-            {email ? <button>Place Order</button> : <button onClick={handleLogin}>Login to Order</button>}
+            {email ? <button onClick={placeholder}>Place Order</button> : <button onClick={handleLogin}>Login to Order</button>}
         </p>
+        </>) : (<h3>Your cart is empty</h3>)}
     </div>
     
   )
