@@ -1,16 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "./App";
+
 export default function Register() {
+  const {user, setUser} = useContext(AppContext) //importing global variable from App.jsx
   
-  const [user, setUser] = useState({});
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
-  const disp_details = () => {
+  const handleSubmit = () => {
     setEmail(user.email);
     setName(user.name);
+    console.log(user);
   }
+
   return (
     <div>
       <h2>Register</h2>
@@ -36,7 +41,7 @@ export default function Register() {
         />
       </p>
       <p>
-        <button onClick={disp_details}>Submit</button>
+        <button onClick={handleSubmit}>Submit</button>
       </p>
       <hr />
       <p>
