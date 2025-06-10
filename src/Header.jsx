@@ -15,6 +15,9 @@ export default function Header({ name }) {
           <li>
             <Link to="/login"><button>Login</button></Link>
           </li>
+          <li>
+            <Link to="/cart"><button>Cart</button></Link>
+          </li>
         </ul>
       </div>
     </div>
